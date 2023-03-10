@@ -1,0 +1,52 @@
+<div [hidden]="hideRooms">
+  <!-- 1 . Interpolation  -->
+  <h1>Welcome to {{ hotelName }}</h1>
+
+  <taj-header [title]="hotelName"></taj-header>
+
+  <!-- 2. Property binding  -->
+  Number of Rooms :
+  <div
+    [innerText]="numberOfRooms"
+    [ngStyle]="{ color: rooms.availableRooms > 0 ? 'red' : 'steelblue' }"
+  ></div>
+
+  <!-- {{roomList | json}} -->
+  <!-- {{rooms$ | async | json }} -->
+</div>
+
+<!-- {{ rooms !== undefined && (rooms?.availableRooms ?? "No rooms") }} -->
+
+<div *ngIf="selectedRoom">
+  {{ selectedRoom | json }}
+</div>
+
+<div>
+  <button class="btn btn-primary" (click)="addRoom()">Add Room</button>
+</div>
+
+<!-- <div *ngIf="rooms.availableRooms > 0"> -->
+<!-- [rooms]="roomList" -->
+
+<div *ngIf="rooms$ | async as rooms">
+  <taj-rooms-list
+    [rooms]="rooms"
+    [title]="title"
+    (selectedRoom)="selectRoom($event)"
+  ></taj-rooms-list>
+</div>
+
+<h1>
+  <!-- {{getError$ | async}} -->
+  Number of rooms : {{roomsCount$ | async}}
+</h1>
+
+<!-- 3 . Event binding  -->
+
+<button (click)="toggle()">Toggle</button>
+
+<button (click)="editRoom()">Edit Room</button>
+
+<button (click)="deleteRoom()">Delete Room</button>
+
+<h1>{{totalBytes}} loaded</h1>
