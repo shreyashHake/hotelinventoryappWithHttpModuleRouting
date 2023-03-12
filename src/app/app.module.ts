@@ -21,6 +21,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
+import { RoomAddComponent } from './rooms/room-add/room-add.component';
+import { FormsModule } from '@angular/forms';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -35,7 +38,9 @@ function initFactory(initService: InitService) {
     ContainerComponent,
     EmployeeComponent,
     NavigationComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    RoomsBookingComponent,
+    RoomAddComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ function initFactory(initService: InitService) {
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   providers: [
     // this providers will execute in the same order as mentioned below . . .

@@ -1,0 +1,82 @@
+<!-- {{room | json}} -->
+Valid : {{ roomsForm.valid }} <br />
+Invalid : {{ roomsForm.invalid }} <br />
+Pristine : {{ roomsForm.pristine }} <br />
+Dirty : {{ roomsForm.dirty }} <br />
+
+<div *ngIf="successMessage !== ''" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<!-- <form #roomsForm="ngForm" (ngSubmit)="addRoom()"> without reset -->
+<form #roomsForm="ngForm" (ngSubmit)="addRoom(roomsForm)">
+  <div class="form-group">
+    <input
+      required
+      class="form-control"
+      type="text"
+      name="roomType"
+      placeholder="Room Type"
+      [(ngModel)]="room.roomType"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      required
+      #minlength="ngModel"
+      minlength="5"
+      maxlength="50"
+      class="form-control"
+      type="text"
+      name="amenities"
+      placeholder="Room amenities"
+      [(ngModel)]="room.amenities"
+    />
+  </div>
+  <div *ngIf="minlength.errors?.['minlength']" class="alert alert-danger">
+    <p>Minimum length should be 5 and maximum 50</p>
+  </div>
+  <div class="form-group form-control">
+    <input
+      required
+      class="form-control"
+      type="number"
+      name="price"
+      placeholder="0"
+      [(ngModel)]="room.price"
+    />
+  </div>
+  <div class="form-group form-control">
+    <input
+      required
+      class="form-control"
+      type="text"
+      name="photos"
+      placeholder="Photo"
+      [(ngModel)]="room.photos"
+    />
+  </div>
+  <div class="form-group form-control">
+    <input
+      required
+      class="form-control"
+      type="date"
+      name="checkInTime"
+      [(ngModel)]="room.checkInTime"
+    />
+  </div>
+  <div class="form-group form-control">
+    <input
+      required
+      class="form-control"
+      type="date"
+      name="checkOutTime"
+      [(ngModel)]="room.checkOutTime"
+    />
+  </div>
+  <div>
+    <button *ngIf="!roomsForm.invalid" class="btn btn-primary" type="submit">
+      Submit
+    </button>
+  </div>
+</form>

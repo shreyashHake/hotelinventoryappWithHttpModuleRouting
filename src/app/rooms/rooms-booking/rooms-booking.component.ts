@@ -18,6 +18,9 @@ export class RoomsBookingComponent implements OnInit {
   // without subscribing :
   roomId$ = this.router.params.pipe(map((params) => params['roomId']));
 
+  // without subscribing for multiple parameters we need to use paramMap
+  roomId2$ = this.router.paramMap.pipe(map((param) => param.get('roomId')));
+
   ngOnInit(): void {
     this.router.params.subscribe((params) => {
       this.roomId = params['roomId'];
