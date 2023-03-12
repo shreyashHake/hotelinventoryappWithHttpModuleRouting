@@ -13,6 +13,14 @@ import { EmployeeComponent } from './employee/employee.component';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './AppConfig/appconfig.services';
 import { RequestInterceptor } from './request.interceptor';
 import { InitService } from './init.service';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -25,13 +33,21 @@ function initFactory(initService: InitService) {
     RoomsListComponent,
     HeaderComponent,
     ContainerComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    NavigationComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     // this providers will execute in the same order as mentioned below . . .
