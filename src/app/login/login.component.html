@@ -1,0 +1,23 @@
+<form>
+  <div class="form-group">
+    <input
+      type="emil"
+      class="form-control"
+      name="name"
+      [(ngModel)]="email"
+      placeholder="Enter you username!"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      class="form-control"
+      name="name"
+      [(ngModel)]="password"
+      placeholder="Enter you password!"
+    />
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="login()">Login</button>
+  </div>
+</form>
